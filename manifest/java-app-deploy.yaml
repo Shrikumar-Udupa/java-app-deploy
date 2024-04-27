@@ -27,25 +27,26 @@ metadata:
   name: java-app-rollout
   namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: java-app
-  strategy:
-    blueGreen:
-      activeService: java-app-service
-      previewService: java-app-preview-service
-      autoPromotionEnabled: true
   template:
     metadata:
-      labels:
-        app: java-app
+      label:
+	app: java-app
     spec:
       containers:
       - name: java-app
         image: shrikumarudupa/java-app
         ports:
         - containerPort: 8080
+  selector:
+    matchLabels:
+      app: java-app
+  replicas: 2
+  strategy:
+    blueGreen:
+      activeService: java-app-service
+      previewService: java-app-preview-service
+      autoPromotionEnabled: true
+
 ---
 apiVersion: v1
 kind: Service
