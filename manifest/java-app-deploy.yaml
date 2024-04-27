@@ -24,23 +24,25 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: java-app-rollout
+  name: java-app-deployment
+  labels:
+    app: java-app
   namespace: default
 spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-app
   template:
     metadata:
-      label:
-	app: java-app
+      labels:
+        app: java-app
     spec:
       containers:
       - name: java-app
         image: shrikumarudupa/java-app
         ports:
         - containerPort: 8080
-  selector:
-    matchLabels:
-      app: java-app
-  replicas: 2
   strategy:
     blueGreen:
       activeService: java-app-service
