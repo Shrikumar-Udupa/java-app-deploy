@@ -21,33 +21,7 @@ spec:
         ports:
         - containerPort: 8080
 ---
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
-metadata:
-  name: java-app-rollout
-  labels:
-    app: java-app
-  namespace: default
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: java-app
-  template:
-    metadata:
-      labels:
-        app: java-app
-    spec:
-      containers:
-      - name: java-app
-        image: shrikumarudupa/java-app
-        ports:
-        - containerPort: 8080
-  strategy:
-    blueGreen:
-      activeService: java-app-service
-      previewService: java-app-preview-service
-      autoPromotionEnabled: true
+
 
 ---
 apiVersion: v1
@@ -64,16 +38,3 @@ spec:
     app: java-app
   type: NodePort
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: java-app-preview-service
-  namespace: default
-spec:
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: java-app
-  type: NodePort
