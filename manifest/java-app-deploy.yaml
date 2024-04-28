@@ -6,7 +6,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: java-app
@@ -24,7 +24,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: java-app-deployment
+  name: java-app-rollout
   labels:
     app: java-app
   namespace: default
@@ -62,6 +62,7 @@ spec:
     targetPort: 8080
   selector:
     app: java-app
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -75,3 +76,4 @@ spec:
     targetPort: 8080
   selector:
     app: java-app
+  type: NodePort
