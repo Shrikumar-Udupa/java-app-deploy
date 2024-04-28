@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: shrikumarudupa/java-app:53
+        image: shrikumarudupa/java-app
         ports:
         - containerPort: 8080
 ---
@@ -29,7 +29,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: java-app
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: shrikumarudupa/java-app:53
+        image: shrikumarudupa/java-app
         ports:
         - containerPort: 8080
   strategy:
