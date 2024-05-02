@@ -6,7 +6,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: java-app
@@ -29,7 +29,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: java-app
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: shrikumarudupa/java-app:58
+        image: shrikumarudupa/java-app:57
         ports:
         - containerPort: 8080
   strategy:
