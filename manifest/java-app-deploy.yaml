@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: shrikumarudupa/java-app:56
+        image: shrikumarudupa/java-app:57
         ports:
         - containerPort: 8080
   strategy:
