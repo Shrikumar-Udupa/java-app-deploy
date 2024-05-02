@@ -6,7 +6,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-app
@@ -29,7 +29,7 @@ metadata:
     app: java-app
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-app
@@ -47,7 +47,7 @@ spec:
     blueGreen:
       activeService: java-app-service
       previewService: java-app-preview-service
-      autoPromotionEnabled: true
+      autoPromotionEnabled: false
 
 ---
 apiVersion: v1
